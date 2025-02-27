@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VisonCount</title>
+    <style>
+        /* Fondo degradado para el body */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, green, white);
+            color: #333;
+        }
+
+        /* Barra superior */
+        .top-bar {
+            background-color: green;
+            padding: 10px 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+        }
+
+        .top-bar button {
+            background-color: #28a745;
+            color: black;
+            border: 2px solid black;
+            padding: 8px 15px;
+            margin-left: 10px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .top-bar button:hover {
+            background-color: green;
+            color: white;
+        }
+
+        /* Header estilizado */
+        header {
+            text-align: center;
+            padding: 40px 20px;
+            background-color: transparent;
+            color: #FFFFFF;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column; /* Alinea verticalmente */
+        }
+
+        header h1 {
+            margin: 10px;
+            font-size: 3em;
+            font-weight: bold;
+            text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3);
+        }
+
+        header p {
+            margin: 10px 0 0;
+            font-size: 1.5em;
+        }
+    
+
+        /* Estilo para la imagen al lado del título */
+        .header-img {
+            max-width: 100px; /* Ajusta el tamaño según tu preferencia */
+            height: auto;
+            margin-top: 20px; /* Asegura que la imagen esté debajo del título */
+        }
+
+        /* Contenedor principal */
+        main {
+            padding: 20px;
+        }
+
+        /* Recuadro blanco para la misión */
+        .mission-box {
+            background-color: white;
+            padding: 20px;
+            margin: 20px auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra para darle profundidad */
+            max-width: 800px;
+            text-align: justify;
+            color: #444;
+            font-size: 1.2em;
+            line-height: 1.6;
+        }
+
+        /* Sección de la misión */
+        .mission {
+            text-align: justify;
+            margin: 40px auto;
+            font-size: 1.2em;
+            max-width: 800px;
+            color: #444;
+        }
+
+        /* Carrusel */
+        .carousel-container {
+            display: flex;
+            overflow: hidden;
+            justify-content: center;
+            align-items: center;
+            max-width: 900px;
+            margin: 40px auto;
+            position: relative;
+            border-radius: 15px;
+            background: #e9e7e7;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .carousel {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .carousel-item {
+            flex: 0 0 100%;
+            max-width: 100%;
+            text-align: center;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .carousel-item img {
+            max-width: 250px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+        }
+
+        .carousel-item h2 {
+            font-size: 1.5em;
+            color: #333;
+        }
+
+        .carousel-item p {
+            font-size: 1.2em;
+            margin-bottom: 20px;
+        }
+
+        .carousel-item .buttons a {
+            text-decoration: none;
+            padding: 10px 20px;
+            color: white;
+            border-radius: 5px;
+            font-size: 1em;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-register {
+            background-color: black;
+            color: white;
+            border: 2px solid black;
+            padding: 8px 15px;
+            margin-left: 10px;
+            border-radius: 50px;
+        }
+
+        .btn-login {
+            background-color: black;
+            color: white;
+            border: 2px solid black;
+            padding: 8px 15px;
+            margin-left: 10px;
+            border-radius: 50px;
+        }
+
+        .btn-register:hover {
+            background-color: black;
+            color: white;
+        }
+
+        .btn-login:hover {
+            background-color: black;
+            color: white;
+        }
+
+        /* Botones de navegación */
+        .carousel-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 2.5em;
+            color: #937FBE;
+            background: rgba(255, 255, 255, 0.8);
+            border: none;
+            cursor: pointer;
+            z-index: 10;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .carousel-nav:hover {
+            background: #937FBE;
+            color: #fff;
+        }
+
+        .carousel-nav.prev {
+            left: 10px;
+        }
+
+        .carousel-nav.next {
+            right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Barra superior -->
+    <div class="top-bar">
+        <button onclick="window.location.href='inicio_sesion.html'">Iniciar Sesion</button>
+    </div>
+
+    <!-- Encabezado -->
+    <header>
+        <h1>¡VisionCount!</h1>
+        <img src="Imagenes/logo_ut.png" alt="Logo Universidad" class="header-img"> 
+    </header>
+
+    <!-- Contenido principal -->
+    <main>
+        <!-- Misión -->
+        <div class="mission-box">
+            <p>
+                Por definir ..............................................................................
+            </p>
+        </div>
+
+        <!-- Carrusel -->
+        <div class="carousel-container">
+            <button class="carousel-nav prev" onclick="prevSlide()">&#10094;</button>
+            <div class="carousel">
+                <div class="carousel-item">
+                    <img src="./img/image.png" alt="Imagen Empresa">
+                    <h2>Para Empresas</h2>
+                    <p>Accede a herramientas para gestionar tu equipo y encontrar talentos.</p>
+                </div>
+                <div class="carousel-item">
+                    <img src="./img/trabajador.png" alt="Imagen Trabajador">
+                    <h2>Para Trabajadores</h2>
+                    <p>Encuentra oportunidades laborales y gestiona tu perfil profesional.</p>
+                
+                </div>
+                <div class="carousel-item">
+                    <img src="./img/freelancer.png" alt="Imagen Freelancer">
+                    <h2>Para Freelancers</h2>
+                    <p>Conéctate con empresas que buscan tus habilidades.</p>
+                    
+                </div>
+                <div class="carousel-item">
+                    <img src="./img/practicante.png" alt="Imagen Practicante">
+                    <h2>Para Practicantes</h2>
+                    <p>Encuentra oportunidades de aprendizaje y crecimiento profesional.</p>
+                    
+                </div>
+            </div>
+            <button class="carousel-nav next" onclick="nextSlide()">&#10095;</button>
+        </div>
+    </main>
+
+    <script>
+        let currentSlide = 0;
+
+        function nextSlide() {
+            const slides = document.querySelectorAll('.carousel-item');
+            currentSlide = (currentSlide + 1) % slides.length;
+            updateCarousel();
+        }
+
+        function prevSlide() {
+            const slides = document.querySelectorAll('.carousel-item');
+            currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+            updateCarousel();
+        }
+
+        function updateCarousel() {
+            const carousel = document.querySelector('.carousel');
+            carousel.style.transform = `translateX(-${currentSlide * 100}%)`;
+        }
+    </script>
+</body>
+</html>

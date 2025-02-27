@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Coordinador</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Estilos generales */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+        
+        header {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            padding: 20px;
+            background-color: green;
+            color: white;
+        }
+        
+        .add-coordinator-btn {
+            background-color: #28a745;
+            color: white;
+            padding: 10px 15px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 1em;
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            transition: background 0.3s ease-in-out;
+        }
+        
+        .add-coordinator-btn:hover {
+            background-color: #25602d;
+        }
+        
+        header h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+        
+        main {
+            max-width: 400px;
+            margin: 30px auto;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .btn-primary {
+            background: #008f39;
+            border: none;
+            font-size: 1.2rem;
+            border-radius: 50px; 
+            padding: 10px;
+            color: white;
+            cursor: pointer;
+            transition: background 0.3s ease-in-out;
+            display: block;
+            width: 100%;
+            margin-bottom: 10px;
+        }
+
+        .btn-primary:hover {
+            background: green;
+        }
+    </style>
+</head>
+<body>
+    <!-- Encabezado -->
+    <header>
+        <h1>¡Bienvenido!</h1>
+        <a href="agregar_coordinador.html" class="add-coordinator-btn" aria-label="Agregar un nuevo coordinador">Agregar Coordinador</a>
+    </header>
+
+    <main>
+        <button class="btn-primary" onclick="window.location.href='carreras.html'" aria-label="Ver la lista de carreras">Ver Carreras</button>
+        <button class="btn-primary" onclick="window.location.href='lista_coordinadores.html'" aria-label="Ver la lista de coordinadores">Ver Coordinadores</button>
+    </main>
+</body>
+</html>
