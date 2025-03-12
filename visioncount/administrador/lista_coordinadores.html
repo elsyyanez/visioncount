@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Carreras</title>
+    <title>Lista de Coordinadores</title>
     <link rel="stylesheet" href="style.css">
     <style>
         /* Estilos generales */
@@ -40,7 +40,7 @@
             text-align: center;
         }
 
-        .carrera {
+        .coordinador {
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -62,25 +62,74 @@
         button:hover {
             background-color: green;
         }
-
-
     </style>
 </head>
 <body>
     <!-- Encabezado -->
     <header>
-        <h1>Lista Coordinadores</h1>
+        <h1>Lista de Coordinadores</h1>
     </header>
 
     <main>
-            <div class="main-content">
-                <h1>Coordinadores</h1>
-                <div class="carrera">
-                    <span>Oris  Estela Vargas Garcia</span>
-                    <button onclick="window.location.href='carreras_coordinadores.html'">Detalles</button>
-                </div>
-               
+        <div class="main-content">
+            <h1>Coordinadores</h1>
+            <div id="lista-coordinadores">
+                <!-- Aquí se cargarán dinámicamente los coordinadores -->
             </div>
+        </div>
     </main>
+
+    <!-- Firebase SDK -->
+    <script type="module">
+        // Importar módulos de Firebase
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js";
+        import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-database.js";
+
+        // Configuración de Firebase
+        const firebaseConfig = {
+            apiKey: "AIzaSyAG9HlMWoXjUC7ub5Dp7OvZnSyPL8nrb1g",
+            authDomain: "integradora-2-51f86.firebaseapp.com",
+            databaseURL: "https://integradora-2-51f86-default-rtdb.firebaseio.com",
+            projectId: "integradora-2-51f86",
+            storageBucket: "integradora-2-51f86.appspot.com",
+            messagingSenderId: "752846426914",
+            appId: "1:752846426914:web:6f0915c872335e5678cb7b",
+        };
+
+        // Inicializar Firebase
+        const app = initializeApp(firebaseConfig);
+        const database = getDatabase(app);
+        const dbRef = ref(database, "usuarios/coordinadores");
+
+        // Función para cargar coordinadores
+        function cargarCoordinadores() {
+            onValue(dbRef, (snapshot) => {
+                const lista = document.getElementById("lista-coordinadores");
+                lista.innerHTML = ""; // Limpiar lista antes de agregar nuevos elementos
+
+                if (!snapshot.exists()) {
+                    lista.innerHTML = "<p>No hay coordinadores registrados.</p>";
+                    return;
+                }
+
+                snapshot.forEach((childSnapshot) => {
+                    const coordinador = childSnapshot.val();
+                    const nombre = coordinador.nombre || "Nombre no disponible";
+
+                    // Crear elemento HTML para cada coordinador
+                    const div = document.createElement("div");
+                    div.classList.add("coordinador");
+                    div.innerHTML = `
+                        <span>${nombre}</span>
+                        <button onclick="window.location.href='carreras_coordinadores.html'">Detalles</button>
+                    `;
+                    lista.appendChild(div);
+                });
+            });
+        }
+
+        // Cargar coordinadores al abrir la página
+        window.onload = cargarCoordinadores;
+    </script>
 </body>
 </html>

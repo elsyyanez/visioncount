@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tipo de usuario</title>
+    <title>Iniciar Sesión</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -53,6 +53,9 @@
         }
 
         input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
             border: 2px solid #6c757d;
             border-radius: 8px;
             font-size: 1rem;
@@ -80,13 +83,48 @@
 </header>
 
 <main>
-    <h2 class="montserrat">Seleccione su usuario</h2>
-    <form>
-        <button type="button" class="btn btn-primary w-100" onclick="window.location.href='administrador/admi.html'">Administrador</button>
-        <button type="button" class="btn btn-primary w-100" onclick="window.location.href='coordinador/coordinador.html'">Coordinador</button>
-
+    <h2 class="montserrat">Iniciar Sesión</h2>
+    <form id="login-form">
+        <input type="email" id="email" placeholder="Correo electrónico" required>
+        <input type="password" id="password" placeholder="Contraseña" required>
+        <button type="button" class="btn btn-primary w-100" id="login-btn">Ingresar</button>
     </form>
 </main>
+
+<script type="module">
+    // Importa Firebase
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+    import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+
+    // Configura Firebase
+    const firebaseConfig = {
+        apiKey: "AIzaSyAG9HlMWoXjUC7ub5Dp7OvZnSyPL8nrb1g",
+        authDomain: "integradora-2-51f86.firebaseapp.com",
+        projectId: "integradora-2-51f86",
+        storageBucket: "integradora-2-51f86.firebasestorage.app",
+        messagingSenderId: "752846426914",
+        appId: "1:752846426914:web:6f0915c872335e5678cb7b",
+    };
+
+    // Inicializa Firebase
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+
+    // Función de inicio de sesión
+    document.getElementById("login-btn").addEventListener("click", () => {
+        const email = document.getElementById("email").value;
+        const password = document.getElementById("password").value;
+
+        signInWithEmailAndPassword(auth, email, password)
+            .then((userCredential) => {
+                alert("Inicio de sesión exitoso");
+                window.location.href = "coordinador/coordinador.html"; // Redirige al panel de coordinador
+            })
+            .catch((error) => {
+                alert("Error al iniciar sesión: " + error.message);
+            });
+    });
+</script>
 
 </body>
 </html>
