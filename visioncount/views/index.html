@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VisonCount</title>
+    <style>
+        /* Fondo degradado para el body */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, green, white);
+            color: #333;
+        }
+
+        /* Barra superior */
+        .top-bar {
+            background-color: green;
+            padding: 10px 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+        }
+
+        .top-bar button {
+            background-color: #28a745;
+            color: black;
+            border: 2px solid black;
+            padding: 8px 15px;
+            margin-left: 10px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .top-bar button:hover {
+            background-color: green;
+            color: white;
+        }
+
+        /* Header estilizado */
+        header {
+            text-align: center;
+            padding: 40px 20px;
+            background-color: transparent;
+            color: #FFFFFF;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column; /* Alinea verticalmente */
+        }
+
+        header h1 {
+            margin: 10px;
+            font-size: 3em;
+            font-weight: bold;
+            text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3);
+        }
+
+        header p {
+            margin: 10px 0 0;
+            font-size: 1.5em;
+        }
+    
+
+        /* Estilo para la imagen al lado del título */
+        .header-img {
+            max-width: 100px; /* Ajusta el tamaño según tu preferencia */
+            height: auto;
+            margin-top: 20px; /* Asegura que la imagen esté debajo del título */
+        }
+
+        /* Contenedor principal */
+        main {
+            padding: 20px;
+        }
+
+        /* Recuadro blanco para la misión */
+        .mission-box {
+            background-color: white;
+            padding: 20px;
+            margin: 20px auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra para darle profundidad */
+            max-width: 800px;
+            text-align: justify;
+            color: #444;
+            font-size: 1.2em;
+            line-height: 1.6;
+        }
+
+        /* Sección de la misión */
+        .mission {
+            text-align: justify;
+            margin: 40px auto;
+            font-size: 1.2em;
+            max-width: 800px;
+            color: #444;
+        }
+
+        .btn-register {
+            background-color: black;
+            color: white;
+            border: 2px solid black;
+            padding: 8px 15px;
+            margin-left: 10px;
+            border-radius: 50px;
+        }
+
+        .btn-login {
+            background-color: black;
+            color: white;
+            border: 2px solid black;
+            padding: 8px 15px;
+            margin-left: 10px;
+            border-radius: 50px;
+        }
+
+        .btn-register:hover {
+            background-color: black;
+            color: white;
+        }
+
+        .btn-login:hover {
+            background-color: black;
+            color: white;
+        }
+
+    </style>
+</head>
+<body>
+    <!-- Barra superior -->
+    <div class="top-bar">
+        <button onclick="window.location.href='/usuario'">Iniciar Sesión</button>
+    </div>
+
+    <!-- Encabezado -->
+    <header>
+        <h1>¡VisionCount!</h1>
+    </header>
+
+    <!-- Contenido principal -->
+    <main>
+        <!-- Misión -->
+        <div class="mission-box">
+            <p>
+                Por definir ..............................................................................
+            </p>
+        </div>
+    </main>
+
+</body>
+</html>
