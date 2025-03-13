@@ -11,3 +11,4 @@ class InicioSesion:
                 "error": error.args[0] }
             print(f"ERROR: {message}")
             return message
+
